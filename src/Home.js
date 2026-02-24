@@ -1,0 +1,316 @@
+import './App.css';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+function Home() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="App">
+      {/* Navigation */}
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container">
+          <Link to="/" className="logo">
+            <div className="logo-monkey">
+              <div className="monkey-circle">
+                <img src="https://i.imghippo.com/files/CR5416wC.png" alt="Monkey Logo" />
+              </div>
+            </div>
+            <div className="logo-name">
+              <span className="logo-pipe">|</span>
+              <span className="logo-hindi-text">विनेश कानजी लोढारी</span>
+              <span className="logo-pipe">|</span>
+            </div>
+          </Link>
+          <ul className="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><Link to="/portfolio">Portfolio</Link></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="hero">
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
+          <h1 className="hero-title">Transform Your Space</h1>
+          <p className="hero-subtitle">Creating Beautiful, Functional Interiors That Inspire</p>
+          <a href="#contact" className="cta-button">Start Your Project</a>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="services">
+        <div className="container">
+          <h2 className="section-title">Our Services</h2>
+          <p className="section-subtitle">Comprehensive interior design solutions tailored to your vision</p>
+
+          <div className="services-grid">
+            <div className="service-card">
+              <div className="service-icon">🏠</div>
+              <h3>Residential Design</h3>
+              <p>Transform your home into a personalized sanctuary with our expert residential design services.</p>
+            </div>
+
+            <div className="service-card">
+              <div className="service-icon">🏢</div>
+              <h3>Commercial Spaces</h3>
+              <p>Create inspiring workspaces that boost productivity and reflect your brand identity.</p>
+            </div>
+
+            <div className="service-card">
+              <div className="service-icon">🎨</div>
+              <h3>Color Consultation</h3>
+              <p>Expert guidance on color schemes that bring harmony and character to your space.</p>
+            </div>
+
+            <div className="service-card">
+              <div className="service-icon">🪑</div>
+              <h3>Furniture Selection</h3>
+              <p>Curated furniture pieces that blend style, comfort, and functionality perfectly.</p>
+            </div>
+
+            <div className="service-card">
+              <div className="service-icon">💡</div>
+              <h3>Lighting Design</h3>
+              <p>Strategic lighting solutions that enhance ambiance and highlight your space's best features.</p>
+            </div>
+
+            <div className="service-card">
+              <div className="service-icon">📐</div>
+              <h3>Space Planning</h3>
+              <p>Optimize your layout for maximum functionality and aesthetic appeal.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section id="portfolio" className="portfolio">
+        <div className="container">
+          <h2 className="section-title">Our Portfolio</h2>
+          <p className="section-subtitle">Explore our recent projects and design transformations</p>
+
+          <div className="portfolio-grid">
+            <div className="portfolio-item">
+              <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80" alt="Modern Living Room" />
+              <div className="portfolio-overlay">
+                <h3>Modern Living Room</h3>
+                <p>Contemporary elegance meets comfort</p>
+              </div>
+            </div>
+
+            <div className="portfolio-item">
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80" alt="Luxury Bedroom" />
+              <div className="portfolio-overlay">
+                <h3>Luxury Bedroom</h3>
+                <p>Serene sanctuary design</p>
+              </div>
+            </div>
+
+            <div className="portfolio-item">
+              <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80" alt="Kitchen Design" />
+              <div className="portfolio-overlay">
+                <h3>Gourmet Kitchen</h3>
+                <p>Functional beauty redefined</p>
+              </div>
+            </div>
+
+            <div className="portfolio-item">
+              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80" alt="Dining Space" />
+              <div className="portfolio-overlay">
+                <h3>Elegant Dining</h3>
+                <p>Where style meets sophistication</p>
+              </div>
+            </div>
+
+            <div className="portfolio-item">
+              <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" alt="Home Office" />
+              <div className="portfolio-overlay">
+                <h3>Home Office</h3>
+                <p>Productivity in style</p>
+              </div>
+            </div>
+
+            <div className="portfolio-item">
+              <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80" alt="Bathroom Design" />
+              <div className="portfolio-overlay">
+                <h3>Spa Bathroom</h3>
+                <p>Luxury meets relaxation</p>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link to="/portfolio" className="cta-button">View All Projects</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="testimonials">
+        <div className="container">
+          <h2 className="section-title">What Our Clients Say</h2>
+          <p className="section-subtitle">Real stories from satisfied homeowners</p>
+
+          <div className="testimonials-grid">
+            <div className="testimonial-card">
+              <div className="stars">⭐⭐⭐⭐⭐</div>
+              <p className="testimonial-text">"LuxeInteriors transformed our home beyond our wildest dreams. Their attention to detail and creative vision is unmatched!"</p>
+              <div className="testimonial-author">
+                <strong>Sarah Johnson</strong>
+                <span>Homeowner, Beverly Hills</span>
+              </div>
+            </div>
+
+            <div className="testimonial-card">
+              <div className="stars">⭐⭐⭐⭐⭐</div>
+              <p className="testimonial-text">"Professional, creative, and incredibly easy to work with. They brought our vision to life while staying within budget."</p>
+              <div className="testimonial-author">
+                <strong>Michael Chen</strong>
+                <span>CEO, Tech Startup</span>
+              </div>
+            </div>
+
+            <div className="testimonial-card">
+              <div className="stars">⭐⭐⭐⭐⭐</div>
+              <p className="testimonial-text">"The team's expertise in color and lighting completely changed the feel of our space. We couldn't be happier with the results!"</p>
+              <div className="testimonial-author">
+                <strong>Emily Rodriguez</strong>
+                <span>Restaurant Owner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="contact">
+        <div className="container">
+          <h2 className="section-title">Let's Create Something Beautiful</h2>
+          <p className="section-subtitle">Get in touch to start your design journey</p>
+
+          <div className="contact-content">
+            <div className="contact-info">
+              <div className="info-item">
+                <div className="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Visit Us</h4>
+                  <p>123 Design Street, Creative District<br/>Los Angeles, CA 90210</p>
+                </div>
+              </div>
+
+              <div className="info-item">
+                <div className="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Call Us</h4>
+                  <p>+1 (555) 123-4567</p>
+                </div>
+              </div>
+
+              <div className="info-item">
+                <div className="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Email Us</h4>
+                  <p>hello@luxeinteriors.com</p>
+                </div>
+              </div>
+
+              <div className="info-item">
+                <div className="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4>Working Hours</h4>
+                  <p>Mon - Fri: 9:00 AM - 6:00 PM<br/>Sat: 10:00 AM - 4:00 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <form className="contact-form">
+              <input type="text" placeholder="Your Name" required />
+              <input type="email" placeholder="Your Email" required />
+              <input type="tel" placeholder="Phone Number" />
+              <textarea placeholder="Tell us about your project..." rows="5" required></textarea>
+              <button type="submit" className="submit-button">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-content">
+            <div className="footer-section">
+              <div className="footer-logo">
+                <div className="footer-logo-monkey">
+                  <div className="footer-monkey-circle">
+                    <img src="https://i.imghippo.com/files/CR5416wC.png" alt="Monkey Logo" />
+                  </div>
+                </div>
+                <div className="footer-logo-name">
+                  <span className="footer-logo-pipe">|</span>
+                  <span className="footer-logo-hindi-text">विनेश कानजी लोढारी</span>
+                  <span className="footer-logo-pipe">|</span>
+                </div>
+              </div>
+              <p>Transforming spaces, elevating lifestyles.</p>
+            </div>
+
+            <div className="footer-section">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="#services">Services</a></li>
+                <li><Link to="/portfolio">Portfolio</Link></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+
+            <div className="footer-section">
+              <h4>Services</h4>
+              <ul>
+                <li><a href="#services">Residential Design</a></li>
+                <li><a href="#services">Commercial Spaces</a></li>
+                <li><a href="#services">Color Consultation</a></li>
+                <li><a href="#services">Space Planning</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <p>&copy; 2024 LuxeInteriors. All rights reserved. | Designed with ❤️</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default Home;
