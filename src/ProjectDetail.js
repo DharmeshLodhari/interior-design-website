@@ -102,9 +102,9 @@ function ProjectDetail() {
       size: '250 sq ft',
       images: [
         'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80',
-        'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=1200&q=80',
-        'https://images.unsplash.com/photo-1617806118857-a1b4d5c031d3?w=1200&q=80',
-        'https://images.unsplash.com/photo-1615529328331-f8917597711f?w=1200&q=80'
+        'https://images.unsplash.com/photo-1574643156929-51fa098b0394?w=1200&q=80',
+        'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=1200&q=80',
+        'https://images.unsplash.com/photo-1606744837616-56c3b3d95b7f?w=1200&q=80'
       ]
     }
   };
