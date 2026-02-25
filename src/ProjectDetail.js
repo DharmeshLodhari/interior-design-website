@@ -1,8 +1,21 @@
 import './ProjectDetail.css';
 import { useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function ProjectDetail() {
   const { id } = useParams();
+  const [lightbox, setLightbox] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  // Close lightbox on Escape key
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') setLightbox(null); };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, []);
 
   const projects = {
     1: {
@@ -15,7 +28,7 @@ function ProjectDetail() {
       images: [
         'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&q=80',
         'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1200&q=80',
-        'https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?w=1200&q=80',
+        'https://images.unsplash.com/photo-1576513897988-02bb99b9e0f2?w=1200&q=80',
         'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?w=1200&q=80'
       ]
     },
@@ -30,7 +43,7 @@ function ProjectDetail() {
         'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1200&q=80',
         'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&q=80',
         'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?w=1200&q=80',
-        'https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?w=1200&q=80'
+        'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=1200&q=80'
       ]
     },
     3: {
@@ -44,7 +57,7 @@ function ProjectDetail() {
         'https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?w=1200&q=80',
         'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&q=80',
         'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1200&q=80',
-        'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=1200&q=80'
+        'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=1200&q=80'
       ]
     },
     5: {
@@ -178,64 +191,78 @@ function ProjectDetail() {
   const project = projects[id] || projects[1];
 
   return (
-    <div className="project-detail-page">
-      {/* Header */}
-      <div className="project-detail-header">
-        <div className="container">
-          <Link to="/portfolio" className="back-button">
-            ← Back to Portfolio
-          </Link>
-          <h1>{project.title}</h1>
-          <p className="project-category">{project.category}</p>
-        </div>
+    <div className="pd-page">
+
+      {/* ── Banner ── */}
+      <div className="pd-banner" style={{ backgroundImage: `url(${project.images[0]})` }}>
+        <div className="pd-banner-overlay" />
+        <Link to="/portfolio" className="pd-back">← Back to Portfolio</Link>
+        <div className="pd-banner-badge">{project.category}</div>
       </div>
 
-      {/* Project Info */}
-      <div className="project-info">
-        <div className="container">
-          <div className="info-grid">
-            <div className="info-block">
-              <h3>Location</h3>
-              <p>{project.location}</p>
+      {/* ── Project Info ── */}
+      <div className="pd-info">
+        <div className="pd-info-top">
+          <h1 className="pd-title">{project.title}</h1>
+          <div className="pd-meta">
+            <div className="pd-meta-item">
+              <span className="pd-meta-label">📍 Location</span>
+              <span className="pd-meta-value">{project.location}</span>
             </div>
-            <div className="info-block">
-              <h3>Year</h3>
-              <p>{project.year}</p>
+            <div className="pd-meta-item">
+              <span className="pd-meta-label">📅 Year</span>
+              <span className="pd-meta-value">{project.year}</span>
             </div>
-            <div className="info-block">
-              <h3>Size</h3>
-              <p>{project.size}</p>
+            <div className="pd-meta-item">
+              <span className="pd-meta-label">📐 Area</span>
+              <span className="pd-meta-value">{project.size}</span>
             </div>
-          </div>
-          <div className="project-description">
-            <h3>About This Project</h3>
-            <p>{project.description}</p>
           </div>
         </div>
+        <div className="pd-divider" />
+        <p className="pd-description">{project.description}</p>
       </div>
 
-      {/* Image Gallery */}
-      <div className="project-gallery">
-        <div className="container">
+      {/* ── Gallery ── */}
+      <div className="pd-gallery">
+        <div className="pd-gallery-heading">
           <h2>Project Gallery</h2>
-          <div className="gallery-images">
-            {project.images.map((image, index) => (
-              <div key={index} className="gallery-image-item">
-                <img src={image} alt={`${project.title} - view ${index + 1}`} />
+          <span>Click any image to view full screen</span>
+        </div>
+        <div className="pd-gallery-grid">
+          {project.images.map((img, i) => (
+            <div key={i} className="pd-gallery-card" onClick={() => setLightbox(i)}>
+              <img src={img} alt={`${project.title} ${i + 1}`} />
+              <div className="pd-gallery-card-hover">
+                <span className="pd-zoom-icon">⤢</span>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="project-cta">
-        <div className="container">
-          <h2>Ready to Transform Your Space?</h2>
-          <p>Let's create something beautiful together</p>
-          <Link to="/#contact" className="cta-button">Start Your Project</Link>
-        </div>
+      {/* ── CTA ── */}
+      <div className="pd-cta">
+        <h2>Interested in a Similar Project?</h2>
+        <p>Let's discuss your vision and bring it to life</p>
+        <Link to="/portfolio" className="pd-cta-btn">View More Projects</Link>
       </div>
+
+      {/* ── Lightbox ── */}
+      {lightbox !== null && (
+        <div className="pd-lightbox" onClick={() => setLightbox(null)}>
+          <button className="pd-lightbox-close" onClick={() => setLightbox(null)}>✕</button>
+          <button className="pd-lightbox-prev" onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + project.images.length) % project.images.length); }}>‹</button>
+          <img
+            src={project.images[lightbox]}
+            alt={`${project.title} ${lightbox + 1}`}
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button className="pd-lightbox-next" onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % project.images.length); }}>›</button>
+          <span className="pd-lightbox-counter">{lightbox + 1} / {project.images.length}</span>
+        </div>
+      )}
+
     </div>
   );
 }

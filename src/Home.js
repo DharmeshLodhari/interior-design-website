@@ -26,16 +26,19 @@ function Home() {
             </div>
             <div className="logo-name">
               <span className="logo-pipe">|</span>
-              <span className="logo-hindi-text">विनेश कानजी लोढारी</span>
+              <div className="logo-text-group">
+                <span className="logo-hindi-text">विनेश कानजी लोढारी</span>
+                <span className="logo-design-studio">Design Studio</span>
+              </div>
               <span className="logo-pipe">|</span>
             </div>
           </Link>
           <ul className="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><Link to="/portfolio">Portfolio</Link></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" onClick={(e) => { e.preventDefault(); document.getElementById('home').scrollIntoView({ behavior: 'smooth' }); }}>Home</a></li>
+            <li><a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services').scrollIntoView({ behavior: 'smooth' }); }}>Services</a></li>
+            <li><a href="#portfolio" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }}>Portfolio</a></li>
+            <li><a href="#testimonials" onClick={(e) => { e.preventDefault(); document.getElementById('testimonials').scrollIntoView({ behavior: 'smooth' }); }}>Testimonials</a></li>
+            <li><a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); }}>Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -151,28 +154,28 @@ function Home() {
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <div className="stars">⭐⭐⭐⭐⭐</div>
-              <p className="testimonial-text">"LuxeInteriors transformed our home beyond our wildest dreams. Their attention to detail and creative vision is unmatched!"</p>
+              <p className="testimonial-text">"અમારા ઘરનું ઇન્ટિરિયર ડિઝાઇન અદ્ભૂત થઈ ગયું! વિનેશભાઈએ અમારી દરેક ઇચ્છા સમજીને એક સ્વપ્ન જેવું ઘર બનાવી આપ્યું. ખૂબ ખૂબ આભાર!"</p>
               <div className="testimonial-author">
-                <strong>Sarah Johnson</strong>
-                <span>Homeowner, Beverly Hills</span>
+                <strong>રાજેશભાઈ પટેલ</strong>
+                <span>Homeowner, Porbandar</span>
               </div>
             </div>
 
             <div className="testimonial-card">
               <div className="stars">⭐⭐⭐⭐⭐</div>
-              <p className="testimonial-text">"Professional, creative, and incredibly easy to work with. They brought our vision to life while staying within budget."</p>
+              <p className="testimonial-text">"Our jewellery showroom looks absolutely stunning after the redesign. The lighting and display layout has increased our customer footfall significantly. Highly recommended!"</p>
               <div className="testimonial-author">
-                <strong>Michael Chen</strong>
-                <span>CEO, Tech Startup</span>
+                <strong>Mehulbhai Shah</strong>
+                <span>Owner, Gokul Jawellars, Porbandar</span>
               </div>
             </div>
 
             <div className="testimonial-card">
               <div className="stars">⭐⭐⭐⭐⭐</div>
-              <p className="testimonial-text">"The team's expertise in color and lighting completely changed the feel of our space. We couldn't be happier with the results!"</p>
+              <p className="testimonial-text">"અમારી ઓફિસ ડિઝાઇન ખૂબ જ સુંદર અને પ્રોફેશનલ બની છે. કામ કરવાનો આનંદ બેવડો થઈ ગયો છે. સ્ટાફ અને ક્લાઇન્ટ બંને ખૂબ પ્રભાવિત છે!"</p>
               <div className="testimonial-author">
-                <strong>Emily Rodriguez</strong>
-                <span>Restaurant Owner</span>
+                <strong>Dhruviben Desai</strong>
+                <span>Business Owner, Rajkot</span>
               </div>
             </div>
           </div>
@@ -187,51 +190,51 @@ function Home() {
 
           <div className="contact-content">
             <div className="contact-info">
-              <div className="info-item">
-                <div className="info-icon">
+              <div className="info-card">
+                <div className="info-card-icon">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
                   </svg>
                 </div>
-                <div>
-                  <h4>Visit Us</h4>
-                  <p>123 Design Street, Creative District<br/>Los Angeles, CA 90210</p>
+                <div className="info-card-body">
+                  <span className="info-card-label">Visit Us</span>
+                  <p className="info-card-text">Kuber Kastbhanjan Complex,<br/>Near Railway Station,<br/>Porbandar - 360575</p>
                 </div>
               </div>
 
-              <div className="info-item">
-                <div className="info-icon">
+              <div className="info-card">
+                <div className="info-card-icon">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/>
                   </svg>
                 </div>
-                <div>
-                  <h4>Call Us</h4>
-                  <p>+1 (555) 123-4567</p>
+                <div className="info-card-body">
+                  <span className="info-card-label">Call Us</span>
+                  <p className="info-card-text">+91 98252 97632</p>
                 </div>
               </div>
 
-              <div className="info-item">
-                <div className="info-icon">
+              <div className="info-card">
+                <div className="info-card-icon">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
                   </svg>
                 </div>
-                <div>
-                  <h4>Email Us</h4>
-                  <p>hello@luxeinteriors.com</p>
+                <div className="info-card-body">
+                  <span className="info-card-label">Email Us</span>
+                  <p className="info-card-text">vineshkanjilodhari@gmail.com</p>
                 </div>
               </div>
 
-              <div className="info-item">
-                <div className="info-icon">
+              <div className="info-card">
+                <div className="info-card-icon">
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" fill="currentColor"/>
                   </svg>
                 </div>
-                <div>
-                  <h4>Working Hours</h4>
-                  <p>Mon - Fri: 9:00 AM - 6:00 PM<br/>Sat: 10:00 AM - 4:00 PM</p>
+                <div className="info-card-body">
+                  <span className="info-card-label">Working Hours</span>
+                  <p className="info-card-text">Mon – Fri: 9:00 AM – 6:00 PM<br/>Sat: 10:00 AM – 4:00 PM</p>
                 </div>
               </div>
             </div>
@@ -260,7 +263,10 @@ function Home() {
                 </div>
                 <div className="footer-logo-name">
                   <span className="footer-logo-pipe">|</span>
-                  <span className="footer-logo-hindi-text">विनेश कानजी लोढारी</span>
+                  <div className="logo-text-group">
+                    <span className="footer-logo-hindi-text">विनेश कानजी लोढारी</span>
+                    <span className="logo-design-studio">Design Studio</span>
+                  </div>
                   <span className="footer-logo-pipe">|</span>
                 </div>
               </div>
@@ -270,20 +276,20 @@ function Home() {
             <div className="footer-section">
               <h4>Quick Links</h4>
               <ul>
-                <li><a href="#services">Services</a></li>
-                <li><Link to="/portfolio">Portfolio</Link></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services').scrollIntoView({ behavior: 'smooth' }); }}>Services</a></li>
+                <li><a href="#portfolio" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }}>Portfolio</a></li>
+                <li><a href="#testimonials" onClick={(e) => { e.preventDefault(); document.getElementById('testimonials').scrollIntoView({ behavior: 'smooth' }); }}>Testimonials</a></li>
+                <li><a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); }}>Contact</a></li>
               </ul>
             </div>
 
             <div className="footer-section">
               <h4>Services</h4>
               <ul>
-                <li><a href="#services">Residential Design</a></li>
-                <li><a href="#services">Commercial Spaces</a></li>
-                <li><a href="#services">Color Consultation</a></li>
-                <li><a href="#services">Space Planning</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services').scrollIntoView({ behavior: 'smooth' }); }}>Residential Design</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services').scrollIntoView({ behavior: 'smooth' }); }}>Commercial Spaces</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services').scrollIntoView({ behavior: 'smooth' }); }}>Color Consultation</a></li>
+                <li><a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services').scrollIntoView({ behavior: 'smooth' }); }}>Space Planning</a></li>
               </ul>
             </div>
           </div>

@@ -8,6 +8,10 @@ function Portfolio() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -62,7 +66,10 @@ function Portfolio() {
             </div>
             <div className="logo-name">
               <span className="logo-pipe">|</span>
-              <span className="logo-hindi-text">विनेश कानजी लोढारी</span>
+              <div className="logo-text-group">
+                <span className="logo-hindi-text">विनेश कानजी लोढारी</span>
+                <span className="logo-design-studio">Design Studio</span>
+              </div>
               <span className="logo-pipe">|</span>
             </div>
           </Link>
@@ -134,7 +141,10 @@ function Portfolio() {
                 </div>
                 <div className="footer-logo-name">
                   <span className="footer-logo-pipe">|</span>
-                  <span className="footer-logo-hindi-text">विनेश कानजी लोढारी</span>
+                  <div className="logo-text-group">
+                    <span className="footer-logo-hindi-text">विनेश कानजी लोढारी</span>
+                    <span className="logo-design-studio">Design Studio</span>
+                  </div>
                   <span className="footer-logo-pipe">|</span>
                 </div>
               </div>
