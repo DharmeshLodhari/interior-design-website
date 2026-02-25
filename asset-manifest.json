@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/interior-design-website/static/css/main.562099a8.css",
-    "main.js": "/interior-design-website/static/js/main.f90094f9.js",
+    "main.js": "/interior-design-website/static/js/main.689b2aac.js",
     "static/js/453.69c34ed9.chunk.js": "/interior-design-website/static/js/453.69c34ed9.chunk.js",
     "index.html": "/interior-design-website/index.html",
     "main.562099a8.css.map": "/interior-design-website/static/css/main.562099a8.css.map",
-    "main.f90094f9.js.map": "/interior-design-website/static/js/main.f90094f9.js.map",
+    "main.689b2aac.js.map": "/interior-design-website/static/js/main.689b2aac.js.map",
     "453.69c34ed9.chunk.js.map": "/interior-design-website/static/js/453.69c34ed9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.562099a8.css",
-    "static/js/main.f90094f9.js"
+    "static/js/main.689b2aac.js"
   ]
 }
