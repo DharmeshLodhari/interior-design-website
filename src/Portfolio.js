@@ -1,56 +1,48 @@
 import './Portfolio.css';
-import { useState } from 'react';
+import './App.css';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('all');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const categories = [
     { id: 'all', name: 'All Projects' },
-    { id: 'living', name: 'Living Room' },
-    { id: 'bedroom', name: 'Bedroom' },
-    { id: 'kitchen', name: 'Kitchen' },
-    { id: 'bathroom', name: 'Bathroom' },
-    { id: 'office', name: 'Office' },
-    { id: 'dining', name: 'Dining' }
+    { id: 'jewelry', name: 'Jewelry Showrooms' },
+    { id: 'residential', name: 'Resident Properties' },
+    { id: 'office', name: 'Office Design' },
+    { id: 'restaurant', name: 'Restaurant Design' }
   ];
 
   const portfolioItems = [
-    // Living Room
-    { id: 1, category: 'living', image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80', title: 'Modern Living Room', description: 'Contemporary elegance meets comfort' },
-    { id: 2, category: 'living', image: 'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&q=80', title: 'Minimalist Living', description: 'Clean lines and open space' },
-    { id: 3, category: 'living', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80', title: 'Cozy Living Space', description: 'Warm and inviting atmosphere' },
-    { id: 4, category: 'living', image: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=800&q=80', title: 'Luxury Living', description: 'Sophisticated modern design' },
+    // Jewelry Showrooms
+    { id: 1, category: 'jewelry', image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80', title: 'Gokul Jawellars', description: 'Timeless elegance in every showcase' },
+    { id: 2, category: 'jewelry', image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80', title: 'Ashapura Jawellars', description: 'Divine craftsmanship, refined interiors' },
+    { id: 3, category: 'jewelry', image: 'https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?w=800&q=80', title: 'Bhakti Jawellars', description: 'Warm luxury meets devotional aesthetics' },
 
-    // Bedroom
-    { id: 5, category: 'bedroom', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80', title: 'Luxury Bedroom', description: 'Serene sanctuary design' },
-    { id: 6, category: 'bedroom', image: 'https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?w=800&q=80', title: 'Modern Bedroom', description: 'Sleek and stylish retreat' },
-    { id: 7, category: 'bedroom', image: 'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&q=80', title: 'Cozy Bedroom', description: 'Comfortable and peaceful' },
-    { id: 8, category: 'bedroom', image: 'https://images.unsplash.com/photo-1578898887155-72ddc3d48399?w=800&q=80', title: 'Master Suite', description: 'Elegant and spacious' },
+    // Resident Properties
+    { id: 5, category: 'residential', image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80', title: 'Modern Luxury Villa', description: 'Contemporary elegance meets comfort' },
+    { id: 6, category: 'residential', image: 'https://images.unsplash.com/photo-1613545325278-f24b0cae1224?w=800&q=80', title: 'Contemporary Apartment', description: 'Sleek urban living redefined' },
+    { id: 7, category: 'residential', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80', title: 'Elegant Penthouse', description: 'Luxury high-rise living' },
+    { id: 8, category: 'residential', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80', title: 'Suburban Family Home', description: 'Warm and welcoming family space' },
 
-    // Kitchen
-    { id: 9, category: 'kitchen', image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80', title: 'Gourmet Kitchen', description: 'Functional beauty redefined' },
-    { id: 10, category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=800&q=80', title: 'Modern Kitchen', description: 'Contemporary cooking space' },
-    { id: 11, category: 'kitchen', image: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80', title: 'Chef\'s Kitchen', description: 'Professional grade design' },
-    { id: 12, category: 'kitchen', image: 'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800&q=80', title: 'Family Kitchen', description: 'Warm and welcoming' },
+    // Office Design
+    { id: 9, category: 'office', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80', title: 'Corporate Office', description: 'Professional workspace excellence' },
+    { id: 10, category: 'office', image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80', title: 'Executive Suite', description: 'Power and prestige combined' },
+    { id: 11, category: 'office', image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800&q=80', title: 'Creative Workspace', description: 'Inspiring collaborative environment' },
+    { id: 12, category: 'office', image: 'https://images.unsplash.com/photo-1629079447777-1e605162dc8d?w=800&q=80', title: 'Tech Office Space', description: 'Modern innovation hub design' },
 
-    // Bathroom
-    { id: 13, category: 'bathroom', image: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80', title: 'Spa Bathroom', description: 'Luxury meets relaxation' },
-    { id: 14, category: 'bathroom', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80', title: 'Modern Bathroom', description: 'Clean and sophisticated' },
-    { id: 15, category: 'bathroom', image: 'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=800&q=80', title: 'Master Bathroom', description: 'Elegant sanctuary' },
-    { id: 16, category: 'bathroom', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80', title: 'Contemporary Bath', description: 'Minimalist elegance' },
-
-    // Office
-    { id: 17, category: 'office', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80', title: 'Home Office', description: 'Productivity in style' },
-    { id: 18, category: 'office', image: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80', title: 'Executive Office', description: 'Professional workspace' },
-    { id: 19, category: 'office', image: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800&q=80', title: 'Creative Studio', description: 'Inspiring work environment' },
-    { id: 20, category: 'office', image: 'https://images.unsplash.com/photo-1629079447777-1e605162dc8d?w=800&q=80', title: 'Modern Workspace', description: 'Contemporary office design' },
-
-    // Dining
-    { id: 21, category: 'dining', image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80', title: 'Elegant Dining', description: 'Where style meets sophistication' },
-    { id: 22, category: 'dining', image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=800&q=80', title: 'Modern Dining', description: 'Contemporary gathering space' },
-    { id: 23, category: 'dining', image: 'https://images.unsplash.com/photo-1617806118857-a1b4d5c031d3?w=800&q=80', title: 'Formal Dining', description: 'Timeless elegance' },
-    { id: 24, category: 'dining', image: 'https://images.unsplash.com/photo-1615529328331-f8917597711f?w=800&q=80', title: 'Family Dining', description: 'Warm and inviting' }
+    // Restaurant Design
+    { id: 13, category: 'restaurant', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80', title: 'Govardhan Thal', description: 'Authentic Indian dosa restaurant, Porbandar' }
   ];
 
   const filteredItems = activeCategory === 'all'
@@ -58,8 +50,33 @@ function Portfolio() {
     : portfolioItems.filter(item => item.category === activeCategory);
 
   return (
-    <div className="portfolio-page">
-      {/* Header */}
+    <div className="App">
+      {/* Navbar */}
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container">
+          <Link to="/" className="logo">
+            <div className="logo-monkey">
+              <div className="monkey-circle">
+                <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Logo" />
+              </div>
+            </div>
+            <div className="logo-name">
+              <span className="logo-pipe">|</span>
+              <span className="logo-hindi-text">विनेश कानजी लोढारी</span>
+              <span className="logo-pipe">|</span>
+            </div>
+          </Link>
+          <ul className="nav-links">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/#services">Services</Link></li>
+            <li><Link to="/portfolio" className="active">Portfolio</Link></li>
+            <li><Link to="/#testimonials">Testimonials</Link></li>
+            <li><Link to="/#contact">Contact</Link></li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* Portfolio Header */}
       <div className="portfolio-header">
         <div className="portfolio-header-content">
           <h1>Our Portfolio</h1>
@@ -103,6 +120,53 @@ function Portfolio() {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-content">
+            <div className="footer-section">
+              <div className="footer-logo">
+                <div className="footer-logo-monkey">
+                  <div className="footer-monkey-circle">
+                    <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Logo" />
+                  </div>
+                </div>
+                <div className="footer-logo-name">
+                  <span className="footer-logo-pipe">|</span>
+                  <span className="footer-logo-hindi-text">विनेश कानजी लोढारी</span>
+                  <span className="footer-logo-pipe">|</span>
+                </div>
+              </div>
+              <p>Transforming spaces, elevating lifestyles.</p>
+            </div>
+
+            <div className="footer-section">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/portfolio">Portfolio</Link></li>
+                <li><Link to="/#testimonials">Testimonials</Link></li>
+                <li><Link to="/#contact">Contact</Link></li>
+              </ul>
+            </div>
+
+            <div className="footer-section">
+              <h4>Services</h4>
+              <ul>
+                <li><Link to="/#services">Residential Design</Link></li>
+                <li><Link to="/#services">Commercial Spaces</Link></li>
+                <li><Link to="/#services">Color Consultation</Link></li>
+                <li><Link to="/#services">Space Planning</Link></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <p>&copy; 2024 LuxeInteriors. All rights reserved. | Designed with ❤️</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

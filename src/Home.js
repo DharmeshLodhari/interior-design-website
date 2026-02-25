@@ -21,7 +21,7 @@ function Home() {
           <Link to="/" className="logo">
             <div className="logo-monkey">
               <div className="monkey-circle">
-                <img src="https://i.imghippo.com/files/CR5416wC.png" alt="Monkey Logo" />
+                <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Monkey Logo" />
               </div>
             </div>
             <div className="logo-name">
@@ -104,50 +104,34 @@ function Home() {
 
           <div className="portfolio-grid">
             <div className="portfolio-item">
-              <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80" alt="Modern Living Room" />
+              <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80" alt="Jewelry Showroom" />
               <div className="portfolio-overlay">
-                <h3>Modern Living Room</h3>
+                <h3>Jewelry Showrooms</h3>
+                <p>Elegant display meets timeless design</p>
+              </div>
+            </div>
+
+            <div className="portfolio-item">
+              <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80" alt="Resident Properties" />
+              <div className="portfolio-overlay">
+                <h3>Resident Properties</h3>
                 <p>Contemporary elegance meets comfort</p>
               </div>
             </div>
 
             <div className="portfolio-item">
-              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80" alt="Luxury Bedroom" />
+              <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" alt="Office Design" />
               <div className="portfolio-overlay">
-                <h3>Luxury Bedroom</h3>
-                <p>Serene sanctuary design</p>
+                <h3>Office Design</h3>
+                <p>Professional workspace excellence</p>
               </div>
             </div>
 
             <div className="portfolio-item">
-              <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&q=80" alt="Kitchen Design" />
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Restaurant Design" />
               <div className="portfolio-overlay">
-                <h3>Gourmet Kitchen</h3>
-                <p>Functional beauty redefined</p>
-              </div>
-            </div>
-
-            <div className="portfolio-item">
-              <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80" alt="Dining Space" />
-              <div className="portfolio-overlay">
-                <h3>Elegant Dining</h3>
-                <p>Where style meets sophistication</p>
-              </div>
-            </div>
-
-            <div className="portfolio-item">
-              <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" alt="Home Office" />
-              <div className="portfolio-overlay">
-                <h3>Home Office</h3>
-                <p>Productivity in style</p>
-              </div>
-            </div>
-
-            <div className="portfolio-item">
-              <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80" alt="Bathroom Design" />
-              <div className="portfolio-overlay">
-                <h3>Spa Bathroom</h3>
-                <p>Luxury meets relaxation</p>
+                <h3>Restaurant Design</h3>
+                <p>Culinary art in elegant setting</p>
               </div>
             </div>
           </div>
@@ -271,7 +255,7 @@ function Home() {
               <div className="footer-logo">
                 <div className="footer-logo-monkey">
                   <div className="footer-monkey-circle">
-                    <img src="https://i.imghippo.com/files/CR5416wC.png" alt="Monkey Logo" />
+                    <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Monkey Logo" />
                   </div>
                 </div>
                 <div className="footer-logo-name">
